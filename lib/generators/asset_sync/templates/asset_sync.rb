@@ -3,6 +3,8 @@ AssetSync.configure do |config|
   config.fog_provider = 'AWS'
   config.aws_access_key_id = ENV['AWS_ACCESS_KEY_ID']
   config.aws_secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
+  # If using temporary Credentials
+  config.aws_session_token = ENV['AWS_SESSION_TOKEN']
   # To use AWS reduced redundancy storage.
   # config.aws_reduced_redundancy = true
   <%- elsif google? -%>

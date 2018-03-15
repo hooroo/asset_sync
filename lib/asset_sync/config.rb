@@ -27,7 +27,7 @@ module AssetSync
     attr_accessor :fog_path_style        # e.g true
 
     # Amazon AWS
-    attr_accessor :aws_access_key_id, :aws_secret_access_key, :aws_reduced_redundancy, :aws_iam_roles
+    attr_accessor :aws_access_key_id, :aws_secret_access_key, :aws_session_token, :aws_reduced_redundancy, :aws_iam_roles
 
     # Rackspace
     attr_accessor :rackspace_username, :rackspace_api_key, :rackspace_auth_url
@@ -143,6 +143,7 @@ module AssetSync
       self.fog_path_style         = yml["fog_path_style"]
       self.aws_access_key_id      = yml["aws_access_key_id"]
       self.aws_secret_access_key  = yml["aws_secret_access_key"]
+      self.aws_session_token      = yml["aws_session_token"]
       self.aws_reduced_redundancy = yml["aws_reduced_redundancy"]
       self.aws_iam_roles          = yml["aws_iam_roles"]
       self.rackspace_username     = yml["rackspace_username"]
@@ -189,6 +190,9 @@ module AssetSync
             :aws_access_key_id => aws_access_key_id,
             :aws_secret_access_key => aws_secret_access_key
           })
+          options.merge!({
+            :aws_session_token => aws_session_token
+          }) if aws_session_token
         end
       elsif rackspace?
         options.merge!({

@@ -3,6 +3,8 @@ defaults: &defaults
   fog_provider: 'AWS'
   aws_access_key_id: "<%= aws_access_key_id %>"
   aws_secret_access_key: "<%= aws_secret_access_key %>"
+  # If using temporary Credentials
+  # aws_session_token = "<%= aws_session_token %>"
   # To use AWS reduced redundancy storage.
   # aws_reduced_redundancy: true
   <%- elsif google? -%>
