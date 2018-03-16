@@ -177,6 +177,8 @@ AssetSync.configure do |config|
   config.fog_directory = ENV['FOG_DIRECTORY']
   config.aws_access_key_id = ENV['AWS_ACCESS_KEY_ID']
   config.aws_secret_access_key = ENV['AWS_SECRET_ACCESS_KEY']
+  # If using temporary Credentials
+  config.aws_session_token = ENV['AWS_SESSION_TOKEN']
 
   # Don't delete files from the store
   # config.existing_remote_files = 'keep'
@@ -215,6 +217,8 @@ defaults: &defaults
   fog_directory: "rails-app-assets"
   aws_access_key_id: "<%= ENV['AWS_ACCESS_KEY_ID'] %>"
   aws_secret_access_key: "<%= ENV['AWS_SECRET_ACCESS_KEY'] %>"
+  # If using temporary Credentials
+  # aws_session_token = "<%= ENV['AWS_SESSION'] %>"
   # You may need to specify what region your storage bucket is in
   # fog_region: "eu-west-1"
   existing_remote_files: keep # Existing pre-compiled assets on S3 will be kept
